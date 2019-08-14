@@ -2,5 +2,5 @@
 
 ## ToDo
 
-- [ ] vagrant vm
-- [ ] dev k8s cluster
+- [x] vagrant vm
+- [x] dev k8s cluster
