@@ -3,4 +3,4 @@
 ## ToDo
 
 - [ ] vagrant vm
-- [ ]dev k8s cluster
+- [ ] dev k8s cluster
