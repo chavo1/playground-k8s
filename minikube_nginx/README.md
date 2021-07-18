@@ -16,10 +16,10 @@ Check that Kubernetes is up and running
 kubectl cluster-info
 Kubernetes master is running at https://<IP addr>:8443
 ```
-### Create 3 nginx replication load balanced.
+### Create nginx load balanced.
 
 ```bash
-kubectl run nginx --image=nginx --replicas=3 --port=80 --expose --service-overrides='{ "spec": { "type": "LoadBalancer" } }'
+kubectl run nginx --image=nginx --port=80 --expose --service-overrides='{ "spec": { "type": "LoadBalancer" } }'
 ```
 Check the replicas just wait a few seconds 
 
@@ -27,7 +27,7 @@ Check the replicas just wait a few seconds
 kubectl get pod
 ```
 
-Check the internal IPs 
+Check the internal IP 
 ```bash
 kubectl get services
 ```
