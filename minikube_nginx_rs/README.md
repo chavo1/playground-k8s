@@ -55,6 +55,6 @@ exit
 #### Delete deployment
 
 ```bash
-kubectl delete pod nginx
-kubectl delete service nginx
+kubectl delete -n default service nginx-service
+kubectl delete -n default deployment nginx
 ```
