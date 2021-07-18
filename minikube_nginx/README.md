@@ -39,9 +39,9 @@ minikube service nginx --url
 ```
 ![ngnix](./nginx.png)
 
-#### Entering in a container
+#### Enter into the container
 
-Execute the following command with the name of your first pod.
+Execute the following command with the name of your pod.
 ```bash
 kubectl exec -ti nginx -- /bin/bash
 ```
