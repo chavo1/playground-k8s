@@ -16,18 +16,18 @@ Check that Kubernetes is up and running
 kubectl cluster-info
 Kubernetes master is running at https://<IP addr>:8443
 ```
-### Create nginx load balanced.
+### Create 3 nginx replication load balanced.
 
 ```bash
-kubectl run nginx --image=nginx --port=80 --expose --service-overrides='{ "spec": { "type": "LoadBalancer" } }'
+kubectl apply -f nginx.yaml
 ```
 Check the replicas just wait a few seconds 
 
 ```bash
-kubectl get pod
+kubectl get pods
 ```
 
-Check the internal IP 
+Check the internal IPs 
 ```bash
 kubectl get services
 ```
@@ -37,11 +37,11 @@ Find the external IP
 ```bash
 minikube service nginx-service --url 
 ```
-![ngnix](./nginx.png)
+![ngnix](/nginx.png)
 
-#### Enter into the container
+#### Entering in a container
 
-Execute the following command with the name of your pod.
+Execute the following command with the name of your first pod.
 ```bash
 kubectl exec -ti nginx -- /bin/bash
 ```
@@ -49,7 +49,7 @@ kubectl exec -ti nginx -- /bin/bash
 Change the Nginx Page into the container and refresh
 ```bash
 cd /usr/share/nginx/html/
-rm index.html && echo "<html><body><h1>Hello Maria</h1></body></html>" > index.html
+rm index.html && echo "<html><body><h1>Hello Gabi</h1></body></html>" > index.html
 exit
 ```
 #### Delete deployment
