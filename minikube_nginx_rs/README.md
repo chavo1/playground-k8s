@@ -37,7 +37,7 @@ Find the external IP
 ```bash
 minikube service nginx-service --url 
 ```
-![ngnix](/nginx.png)
+![ngnix](./nginx.png)
 
 #### Entering in a container
 
