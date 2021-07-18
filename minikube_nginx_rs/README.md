@@ -1,4 +1,4 @@
-# Minikube Nginx Tutorial
+# Minikube Nginx/RS Tutorial
 
 ## Prerequisite
 - [Minikube](https://github.com/kubernetes/minikube/releases) 
