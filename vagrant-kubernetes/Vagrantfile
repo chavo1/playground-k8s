@@ -1,0 +1,30 @@
+Vagrant.configure("2") do |config|
+  config.vm.box = "ubuntu/bionic64"
+  config.vm.provision "shell", inline: <<-SHELL
+  echo "10.0.1.16       master" >> /etc/hosts
+  echo "10.0.1.17       worker-1" >> /etc/hosts
+  echo "10.0.1.18       worker-2" >> /etc/hosts
+  SHELL
+
+  config.vm.define "master" do |master|
+    master.vm.hostname  = "master"
+    master.vm.provision "shell", path: "./scripts/common.sh"
+    master.vm.provision "shell", path: "./scripts/master.sh"
+    master.vm.network "private_network", ip: "10.0.1.16", virtualbox__intnet: true
+    master.vm.provider "virtualbox" do |pmv|
+      pmv.memory = 2048
+    end
+  end
+
+  (1..2).each do |i|
+    config.vm.define "worker#{i}" do |node|
+      node.vm.hostname  = "worker-#{i}"
+      node.vm.provision "shell", path: "./scripts/common.sh"
+      node.vm.provision "shell", path: "./scripts/worker.sh"
+      node.vm.network "private_network", ip: "10.0.1.#{i+16}", virtualbox__intnet: true
+      node.vm.provider "virtualbox" do |pmv|
+        pmv.memory = 2048
+      end
+    end
+ end
+end
